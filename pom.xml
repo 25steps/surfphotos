@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.drew</groupId>
+    <artifactId>surfphotos</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <modules>
+        <module>surfphotos-model</module>
+        <module>surfphotos-common</module>
+        <module>surfphotos-ejb</module>
+        <module>surfphotos-web</module>
+        <module>surfphotos-ear</module>
+
+        <!--module>surfphotos-rest</module>
+        <module>surfphotos-ws</module-->
+
+    </modules>
+
+
+</project>
