@@ -1,4 +1,4 @@
-package com.drew.surrfphotos.ejb.service.bean;
+package com.drew.surfphotos.ejb.service.bean;
 
 import com.drew.surfphotos.common.annotation.cdi.Property;
 import com.drew.surfphotos.ejb.repository.ProfileRepository;

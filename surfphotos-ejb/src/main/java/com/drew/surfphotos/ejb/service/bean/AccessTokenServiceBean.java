@@ -1,4 +1,4 @@
-package com.drew.surrfphotos.ejb.service.bean;
+package com.drew.surfphotos.ejb.service.bean;
 
 import com.drew.surfphotos.ejb.repository.AccessTokenRepository;
 import com.drew.surfphotos.exception.AccessForbiddenException;
