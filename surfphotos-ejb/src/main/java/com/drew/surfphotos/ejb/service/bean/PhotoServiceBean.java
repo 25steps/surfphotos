@@ -2,6 +2,7 @@ package com.drew.surfphotos.ejb.service.bean;
 
 import com.drew.surfphotos.ejb.repository.PhotoRepository;
 import com.drew.surfphotos.ejb.repository.ProfileRepository;
+import com.drew.surfphotos.ejb.service.ImageStorageService;
 import com.drew.surfphotos.exception.ObjectNotFoundException;
 import com.drew.surfphotos.exception.ValidationException;
 import com.drew.surfphotos.model.*;
@@ -26,6 +27,12 @@ public class PhotoServiceBean implements PhotoService {
 
     @Inject
     private ProfileRepository profileRepository;
+
+    @Inject
+    private ImageStorageService imageStorageService;
+
+    @EJB
+    private ImageProcessorBean imageProcessorBean;
 
     @Resource
     private SessionContext sessionContext;
@@ -88,5 +95,15 @@ public class PhotoServiceBean implements PhotoService {
             sessionContext.setRollbackOnly();
             asyncOperation.onFailed(throwable);
         }
+    }
+
+    public Photo uploadNewPhoto(Profile currentProfile, ImageResource imageResource){
+        Photo photo = imageProcessorBean.processPhoto(imageResource);
+        photo.setProfile(currentProfile);
+        photoRepository.create(photo);
+        photoRepository.flush();
+        currentProfile.setPhotoCount(photoRepository.countProfilePhotos(currentProfile.getId()));
+        profileRepository.update(currentProfile);
+        return photo;
     }
 }

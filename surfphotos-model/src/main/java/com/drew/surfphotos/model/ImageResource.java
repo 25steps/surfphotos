@@ -1,6 +1,7 @@
 package com.drew.surfphotos.model;
 
-import javax.validation.Path;
+
+import java.nio.file.Path;
 
 /**
  * Объект модели, который представляет собой медиа данные
