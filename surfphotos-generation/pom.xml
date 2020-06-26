@@ -29,6 +29,22 @@
             <artifactId>tomee-embedded</artifactId>
             <version>7.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.drew</groupId>
+            <artifactId>surfphotos-model</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.drew</groupId>
+            <artifactId>surfphotos-common</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.drew</groupId>
+            <artifactId>surfphotos-ejb</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
