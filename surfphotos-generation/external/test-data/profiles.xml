@@ -1,0 +1,44 @@
+<profiles>
+    <profile>
+        <firstName>Luke</firstName>
+        <lastName>Utah</lastName>
+        <avatarUrl>external/test-data/avatar/Luke Utah.jpg</avatarUrl>
+        <jobTitle>CEO of Pied Piper</jobTitle>
+        <location>Los Angeles, California</location>
+    </profile>
+    <profile>
+        <firstName>Edgar</firstName>
+        <lastName>Bothi</lastName>
+        <avatarUrl>external/test-data/avatar/Edgar Bothi.jpg</avatarUrl>
+        <jobTitle>Head of Business Development</jobTitle>
+        <location>Los Angeles, California</location>
+    </profile>
+    <profile>
+        <firstName>Klemens</firstName>
+        <lastName>Rouch</lastName>
+        <avatarUrl>external/test-data/avatar/Klemens Rouch.jpg</avatarUrl>
+        <jobTitle>Senior Programmer</jobTitle>
+        <location>Los Angeles, California</location>
+    </profile>
+    <profile>
+        <firstName>Matias</firstName>
+        <lastName>Grommet</lastName>
+        <avatarUrl>external/test-data/avatar/Matias Grommet.jpg</avatarUrl>
+        <jobTitle>Senior Systems Architect</jobTitle>
+        <location>Los Angeles, California</location>
+    </profile>
+    <profile>
+        <firstName>Teresa</firstName>
+        <lastName>Sansara</lastName>
+        <avatarUrl>external/test-data/avatar/Teresa Sansara.jpg</avatarUrl>
+        <jobTitle>Majority Investor</jobTitle>
+        <location>Los Angeles, California</location>
+    </profile>
+    <profile>
+        <firstName>Tobias</firstName>
+        <lastName>Chayder</lastName>
+        <avatarUrl>external/test-data/avatar/Tobias Chayder.jpg</avatarUrl>
+        <jobTitle>Fullstack Developer</jobTitle>
+        <location>Los Angeles, California</location>
+    </profile>
+</profiles>
