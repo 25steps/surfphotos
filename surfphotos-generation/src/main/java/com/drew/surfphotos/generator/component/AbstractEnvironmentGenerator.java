@@ -1,4 +1,4 @@
-package com.drew.surfphotos.generation.component;
+package com.drew.surfphotos.generator.component;
 
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.Context;
@@ -57,7 +57,7 @@ public abstract class AbstractEnvironmentGenerator {
         for (String module : modules) {
             files.add(new File(resolveModule(module)));
         }
-        files.add(new File("target/classes"));
+        files.add(new File("surfphotos-generation/target/classes"));
         return files.toArray(new File[files.size()]);
     }
 

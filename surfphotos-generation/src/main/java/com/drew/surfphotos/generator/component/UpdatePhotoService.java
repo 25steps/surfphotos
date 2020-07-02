@@ -1,4 +1,4 @@
-package com.drew.surfphotos.generation.component;
+package com.drew.surfphotos.generator.component;
 
 import com.drew.surfphotos.ejb.repository.PhotoRepository;
 import com.drew.surfphotos.model.domain.Photo;

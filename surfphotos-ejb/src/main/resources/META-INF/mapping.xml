@@ -7,6 +7,12 @@ http://www.datanucleus.org/products/accessplatform_3_3/jpa/metadata_xml.html
                  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
                                 http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
                  version="2.1">
+    <mapped-superclass class="com.drew.surfphotos.model.domain.AbstractDomain">
+        <entity-listeners>
+            <entity-listener class="com.drew.surfphotos.ejb.jpa.listener.CreatedNowListener">
+            </entity-listener>
+        </entity-listeners>
+    </mapped-superclass>
     <entity class="com.drew.surfphotos.model.domain.AccessToken">
         <entity-listeners>
             <entity-listener class="com.drew.surfphotos.ejb.jpa.listener.AccessTokenLifeCycleManager">

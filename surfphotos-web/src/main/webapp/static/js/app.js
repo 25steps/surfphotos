@@ -30,7 +30,7 @@ $(function () {
     function initSortModeSelector() {
         $('#sort-mode-selector').on('change', function () {
             var option = this.value;
-            window.location = 'home.html?sort=' + option;
+            window.location = '/?sort=' + option;
         });
     }
 

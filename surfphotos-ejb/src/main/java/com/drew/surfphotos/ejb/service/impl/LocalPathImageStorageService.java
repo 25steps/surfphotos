@@ -38,7 +38,7 @@ public class LocalPathImageStorageService implements ImageStorageService {
     @Override
     public String saveProtectedImage(Path path) {
         String fileName = fileNameGeneratorService.generateUniqueFileName();
-        Path destinationPath = Paths.get(storageRoot + fileName);
+        Path destinationPath = Paths.get(storageRoot, fileName);
         saveImage(path, destinationPath);
         return fileName;
     }
@@ -46,7 +46,7 @@ public class LocalPathImageStorageService implements ImageStorageService {
     @Override
     public String savePublicImage(ImageCategory imageCategory, Path path) {
         String fileName = fileNameGeneratorService.generateUniqueFileName();
-        Path destinationPath = Paths.get(mediaRoot + imageCategory.getRelativeRoot() + fileName);
+        Path destinationPath = Paths.get(mediaRoot, imageCategory.getRelativeRoot(), fileName);
         saveImage(path, destinationPath);
         return "/" + imageCategory.getRelativeRoot() + fileName;
     }

@@ -1,4 +1,4 @@
-package com.drew.surfphotos.generation.component;
+package com.drew.surfphotos.generator.component;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;

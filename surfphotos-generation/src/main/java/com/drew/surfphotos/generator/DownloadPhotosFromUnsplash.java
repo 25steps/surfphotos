@@ -1,4 +1,4 @@
-package com.drew.surfphotos.generation;
+package com.drew.surfphotos.generator;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
