@@ -7,7 +7,7 @@ import com.drew.surfphotos.model.domain.Profile;
  * Представитель бизнес интерфейса который используется для регистрации пользователя
  * В качестве хранения будем использовать оперативную память для неполного пользователя
  */
-public interface ProfileSingUpService {
+public interface ProfileSignUpService {
     void createSignUpProfile(Profile profile);//создания нового объекта профиля
 
     Profile getCurrentProfile() throws ObjectNotFoundException;//получать и заполнять существующий
