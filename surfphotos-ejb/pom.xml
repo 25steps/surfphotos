@@ -54,6 +54,12 @@
             <artifactId>restfb</artifactId>
             <version>1.38.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.22.0</version>
+        </dependency>
     </dependencies>
 
     <build>

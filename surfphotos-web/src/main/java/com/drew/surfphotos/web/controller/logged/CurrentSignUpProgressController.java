@@ -14,14 +14,15 @@ import java.io.IOException;
 import static com.drew.surfphotos.web.util.RoutingUtils.forwardToPage;
 
 @WebServlet(urlPatterns = "/sign-up", loadOnStartup = 1)
-public class CurrentSignUpProgressController extends HttpServlet {
+public class CurrentSignUpProgressController extends HttpServlet{
+
     @Inject
     private ProfileSignUpServiceProxy profileSignUpService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Profile profile = profileSignUpService.getCurrentProfile();
-        System.out.println("Current profile: "+profile);
-        forwardToPage("home", req, resp);
+        req.setAttribute("profile", profile);
+        forwardToPage("sign-up", req, resp);
     }
 }

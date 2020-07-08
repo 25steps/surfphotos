@@ -1,5 +1,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/jquery.poptrox.min.js"></script>
 <script src="/static/js/skel.min.js"></script>
@@ -9,3 +11,11 @@
 <script src="/static/js/main.js"></script>
 <script src="/static/js/messages.js"></script>
 <script src="/static/js/app.js"></script>
+
+<c:if test="${currentRequestUrl == '/'}">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script>
+        var googlePlusClientId = '${googlePlusClientId}';
+        console.log(googlePlusClientId);
+    </script>
+</c:if>

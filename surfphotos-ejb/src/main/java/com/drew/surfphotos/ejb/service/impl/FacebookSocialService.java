@@ -25,6 +25,7 @@ public class FacebookSocialService implements SocialService{
     @Property("surfphotos.social.facebook.client-id")
     private String clientId;
 
+//  Так как facebook пока ещё не настроен, не известно подтягивается ли значение из envprop..
     @Inject
     @Property("surfphotos.social.facebook.client-secret")
     private String secret;
