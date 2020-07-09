@@ -2,6 +2,7 @@ package com.drew.surfphotos.web.controller.logged;
 
 import com.drew.surfphotos.model.domain.Profile;
 import com.drew.surfphotos.web.component.ProfileSignUpServiceProxy;
+import com.drew.surfphotos.web.form.ProfileForm;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -22,7 +23,7 @@ public class CurrentSignUpProgressController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Profile profile = profileSignUpService.getCurrentProfile();
-        req.setAttribute("profile", profile);
+        req.setAttribute("profile", new ProfileForm(profile));
         forwardToPage("sign-up", req, resp);
     }
 }

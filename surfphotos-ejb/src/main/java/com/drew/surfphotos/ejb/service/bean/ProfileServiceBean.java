@@ -2,6 +2,7 @@ package com.drew.surfphotos.ejb.service.bean;
 
 import com.drew.surfphotos.common.annotation.cdi.Property;
 import com.drew.surfphotos.common.config.ImageCategory;
+import com.drew.surfphotos.ejb.model.URLImageResource;
 import com.drew.surfphotos.ejb.repository.ProfileRepository;
 import com.drew.surfphotos.ejb.service.ImageStorageService;
 import com.drew.surfphotos.ejb.service.TranslitConverter;
@@ -71,6 +72,9 @@ public class ProfileServiceBean implements ProfileService {
             setProfileUid(profile);
         }
         profileRepository.create(profile);
+        if (uploadProfileAvatar && profile.getAvatarUrl() != null) {
+            uploadNewAvatar(profile, new URLImageResource(profile.getAvatarUrl()));
+        }
     }
 
     private void setProfileUid(Profile profile) {

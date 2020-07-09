@@ -1,7 +1,9 @@
 package com.drew.surfphotos.ejb.service.bean;
 
 
+import com.drew.surfphotos.ejb.model.URLImageResource;
 import com.drew.surfphotos.exception.ObjectNotFoundException;
+import com.drew.surfphotos.model.AsyncOperation;
 import com.drew.surfphotos.model.domain.Profile;
 import com.drew.surfphotos.service.ProfileService;
 import com.drew.surfphotos.service.ProfileSignUpService;
@@ -15,6 +17,7 @@ import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.drew.surfphotos.common.config.Constants.DEFAULT_ASYNC_OPERATION_TIMEOUT_IN_MILLIS;
 import static java.util.concurrent.TimeUnit.MINUTES;
 
 @Stateful
@@ -47,6 +50,25 @@ public class ProfileSignUpServiceBean implements ProfileSignUpService, Serializa
     @Remove
     public void completeSignUp() {
         profileService.signUp(profile, false);
+        if (profile.getAvatarUrl() != null) {
+            profileService.uploadNewAvatar(profile, new URLImageResource(profile.getAvatarUrl()), new AsyncOperation<Profile>() {
+
+                @Override
+                public void onSuccess(Profile result) {
+                    logger.log(Level.INFO, "Profile avatar successful saved to {0}", result.getAvatarUrl());
+                }
+
+                @Override
+                public void onFailed(Throwable throwable) {
+                    logger.log(Level.SEVERE, "Profile avatar can't saved: " + throwable.getMessage(), throwable);
+                }
+
+                @Override
+                public long getTimeOutInMillis() {
+                    return DEFAULT_ASYNC_OPERATION_TIMEOUT_IN_MILLIS;
+                }
+            });
+        }
     }
 
     @Override
