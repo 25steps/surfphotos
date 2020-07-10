@@ -1,5 +1,6 @@
 package com.drew.surfphotos.web.form;
 
+import com.drew.surfphotos.common.annotation.group.ProfileUpdateGroup;
 import com.drew.surfphotos.common.annotation.group.SignUpGroup;
 import com.drew.surfphotos.model.domain.Profile;
 import com.drew.surfphotos.model.validation.EnglishLanguage;
@@ -16,24 +17,24 @@ public class ProfileForm {
     @AssertTrue(message = "{ProfileForm.agree.AssertTrue}", groups = SignUpGroup.class)
     private boolean agree;
 
-    @NotNull(message = "{Profile.firstName.NotNull}", groups = SignUpGroup.class)
-    @Size(min = 1, max = 60, message = "{Profile.firstName.Size}", groups = SignUpGroup.class)
-    @EnglishLanguage(withNumbers = false, withSpecialSymbols = false, groups = SignUpGroup.class)
+    @NotNull(message = "{Profile.firstName.NotNull}", groups = {SignUpGroup.class, ProfileUpdateGroup.class})
+    @Size(min = 1, max = 60, message = "{Profile.firstName.Size}", groups = {SignUpGroup.class, ProfileUpdateGroup.class})
+    @EnglishLanguage(withNumbers = false, withSpecialSymbols = false, groups = {SignUpGroup.class, ProfileUpdateGroup.class})
     private String firstName;
 
-    @NotNull(message = "{Profile.lastName.NotNull}", groups = SignUpGroup.class)
-    @Size(min = 1, max = 60, message = "{Profile.lastName.Size}", groups = SignUpGroup.class)
-    @EnglishLanguage(withNumbers = false, withSpecialSymbols = false, groups = SignUpGroup.class)
+    @NotNull(message = "{Profile.lastName.NotNull}", groups = {SignUpGroup.class, ProfileUpdateGroup.class})
+    @Size(min = 1, max = 60, message = "{Profile.lastName.Size}", groups = {SignUpGroup.class, ProfileUpdateGroup.class})
+    @EnglishLanguage(withNumbers = false, withSpecialSymbols = false, groups = {SignUpGroup.class, ProfileUpdateGroup.class})
     private String lastName;
 
-    @NotNull(message = "{Profile.jobTitle.NotNull}", groups = SignUpGroup.class)
-    @Size(min = 5, max = 100, message = "{Profile.jobTitle.Size}", groups = SignUpGroup.class)
-    @EnglishLanguage(withSpecialSymbols = false, groups = SignUpGroup.class)
+    @NotNull(message = "{Profile.jobTitle.NotNull}", groups = {SignUpGroup.class, ProfileUpdateGroup.class})
+    @Size(min = 5, max = 100, message = "{Profile.jobTitle.Size}", groups = {SignUpGroup.class, ProfileUpdateGroup.class})
+    @EnglishLanguage(withSpecialSymbols = false, groups = {SignUpGroup.class, ProfileUpdateGroup.class})
     private String jobTitle;
 
-    @NotNull(message = "{Profile.location.NotNull}", groups = SignUpGroup.class)
-    @Size(min = 5, max = 100, message = "{Profile.location.Size}", groups = SignUpGroup.class)
-    @EnglishLanguage(withSpecialSymbols = false, groups = SignUpGroup.class)
+    @NotNull(message = "{Profile.location.NotNull}", groups = {SignUpGroup.class, ProfileUpdateGroup.class})
+    @Size(min = 5, max = 100, message = "{Profile.location.Size}", groups = {SignUpGroup.class, ProfileUpdateGroup.class})
+    @EnglishLanguage(withSpecialSymbols = false, groups = {SignUpGroup.class, ProfileUpdateGroup.class})
     private String location;
 
     public ProfileForm() {

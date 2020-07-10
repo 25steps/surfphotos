@@ -3,6 +3,7 @@ package com.drew.surfphotos.ejb.service.bean;
 import com.drew.surfphotos.ejb.repository.PhotoRepository;
 import com.drew.surfphotos.ejb.repository.ProfileRepository;
 import com.drew.surfphotos.ejb.service.ImageStorageService;
+import com.drew.surfphotos.ejb.service.interceptor.AsyncOperationInterceptor;
 import com.drew.surfphotos.exception.ObjectNotFoundException;
 import com.drew.surfphotos.exception.ValidationException;
 import com.drew.surfphotos.model.*;
@@ -13,6 +14,7 @@ import com.drew.surfphotos.service.PhotoService;
 import javax.annotation.Resource;
 import javax.ejb.*;
 import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,15 +83,16 @@ public class PhotoServiceBean implements PhotoService {
         photo.setDownloads(photo.getDownloads() + 1);
         photoRepository.update(photo);
 
-        throw new UnsupportedOperationException("Not implemented yet");
+        return imageStorageService.getOriginalImage(photo.getOriginalUrl());
     }
 
     @Override
     @Asynchronous
+    @Interceptors(AsyncOperationInterceptor.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void uploadNewPhoto(Profile currentProfile, ImageResource imageResource, AsyncOperation<Photo> asyncOperation) {
         try {
-            Photo photo = null; //FIXME
+            Photo photo = uploadNewPhoto(currentProfile, imageResource);
             asyncOperation.onSuccess(photo);
         } catch (Throwable throwable) {
             sessionContext.setRollbackOnly();

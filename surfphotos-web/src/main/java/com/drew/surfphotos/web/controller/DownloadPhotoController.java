@@ -17,6 +17,7 @@ import java.io.OutputStream;
 
 @WebServlet(urlPatterns = "/download/*", loadOnStartup = 1)
 public class DownloadPhotoController extends HttpServlet {
+
     @EJB
     private PhotoService photoService;
 

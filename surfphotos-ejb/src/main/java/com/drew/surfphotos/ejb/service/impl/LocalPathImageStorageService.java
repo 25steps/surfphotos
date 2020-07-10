@@ -72,7 +72,7 @@ public class LocalPathImageStorageService implements ImageStorageService {
 
     @Override
     public void deletePublicImage(String url) {
-        Path destinationPath = Paths.get(mediaRoot + url.substring(1));
+        Path destinationPath = Paths.get(mediaRoot, url.substring(1));
         try {
             Files.deleteIfExists(destinationPath);
         } catch (IOException | RuntimeException e) {
@@ -82,7 +82,7 @@ public class LocalPathImageStorageService implements ImageStorageService {
 
     @Override
     public OriginalImage getOriginalImage(String originalUrl) {
-        Path originalPath = Paths.get(storageRoot + originalUrl);
+        Path originalPath = Paths.get(storageRoot, originalUrl);
         try {
             return new OriginalImage(
                     Files.newInputStream(originalPath),
