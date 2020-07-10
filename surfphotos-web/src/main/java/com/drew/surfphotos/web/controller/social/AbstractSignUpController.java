@@ -4,6 +4,7 @@ import com.drew.surfphotos.model.domain.Profile;
 import com.drew.surfphotos.service.ProfileService;
 import com.drew.surfphotos.service.SocialService;
 import com.drew.surfphotos.web.component.ProfileSignUpServiceProxy;
+import com.drew.surfphotos.web.security.SecurityUtils;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import static com.drew.surfphotos.web.util.RoutingUtils.redirectToUrl;
+import static com.drew.surfphotos.web.util.RoutingUtils.redirectToValidAuthUrl;
 
 public abstract class AbstractSignUpController extends HttpServlet{
 
@@ -30,11 +32,15 @@ public abstract class AbstractSignUpController extends HttpServlet{
 
     @Override
     protected final void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Optional<String> code = Optional.ofNullable(req.getParameter("code"));
-        if (code.isPresent()) {
-            processSignUp(code.get(), req, resp);
+        if (SecurityUtils.isAuthenticated()) {
+            redirectToValidAuthUrl(req, resp);
         } else {
-            redirectToUrl("/", req, resp);
+            Optional<String> code = Optional.ofNullable(req.getParameter("code"));
+            if (code.isPresent()) {
+                processSignUp(code.get(), req, resp);
+            } else {
+                redirectToUrl("/", req, resp);
+            }
         }
     }
 
@@ -43,10 +49,10 @@ public abstract class AbstractSignUpController extends HttpServlet{
         Optional<Profile> profileOptional = profileService.findByEmail(signUpProfile.getEmail());
         if (profileOptional.isPresent()) {
             Profile profile = profileOptional.get();
-            //TODO Authentificate
+            SecurityUtils.authentificate(profile);
             redirectToUrl("/" + profile.getUid(), req, resp);
         } else {
-            //TODO Authentificate
+            SecurityUtils.authentificate();
             profileSignUpService.createSignUpProfile(signUpProfile);
             redirectToUrl("/sign-up", req, resp);
         }

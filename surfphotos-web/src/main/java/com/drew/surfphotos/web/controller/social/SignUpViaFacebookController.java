@@ -2,6 +2,7 @@ package com.drew.surfphotos.web.controller.social;
 
 import com.drew.surfphotos.common.annotation.qualifier.Facebook;
 import com.drew.surfphotos.service.SocialService;
+import com.drew.surfphotos.web.security.SecurityUtils;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static com.drew.surfphotos.web.util.RoutingUtils.redirectToUrl;
+import static com.drew.surfphotos.web.util.RoutingUtils.redirectToValidAuthUrl;
 
 /**
  * При помощи квалификатора @Facebook получаем соответствующий url FacebookSocialService и выполнеям редирект
@@ -25,6 +27,10 @@ public class SignUpViaFacebookController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        redirectToUrl(socialService.getAuthorizeUrl(), req, resp);
+        if (SecurityUtils.isAuthenticated()) {
+            redirectToValidAuthUrl(req, resp);
+        } else {
+            redirectToUrl(socialService.getAuthorizeUrl(), req, resp);
+        }
     }
 }

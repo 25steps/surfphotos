@@ -1,5 +1,7 @@
 package com.drew.surfphotos.web.util;
 
+import com.drew.surfphotos.web.security.SecurityUtils;
+
 import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +27,14 @@ public class RoutingUtils {
 
     public static void sendJson(JsonObject json, HttpServletRequest request, HttpServletResponse response) throws IOException {
         sendJson("application/json", json, request, response);
+    }
+
+    public static void redirectToValidAuthUrl(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        if (SecurityUtils.isTempAuthenticated()) {
+            redirectToUrl("/sign-up", request, response);
+        } else {
+            redirectToUrl("/" + SecurityUtils.getCurrentProfile().getUid(), request, response);
+        }
     }
 
     private static void sendJson(String contentType, JsonObject json, HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -3,6 +3,7 @@ package com.drew.surfphotos.web.controller.logged;
 import com.drew.surfphotos.common.annotation.group.SignUpGroup;
 import com.drew.surfphotos.model.domain.Profile;
 import com.drew.surfphotos.web.component.ProfileSignUpServiceProxy;
+import com.drew.surfphotos.web.security.SecurityUtils;
 
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +35,7 @@ public class CompleteSignUpController extends AbstractProfileSaveController {
     }
 
     private void reloginWithUserRole(Profile profile) {
-        //TODO
+        SecurityUtils.logout();
+        SecurityUtils.authentificate(profile);
     }
 }

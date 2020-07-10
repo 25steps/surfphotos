@@ -6,6 +6,7 @@ import com.drew.surfphotos.model.domain.Photo;
 import com.drew.surfphotos.model.domain.Profile;
 import com.drew.surfphotos.service.PhotoService;
 import com.drew.surfphotos.service.ProfileService;
+import com.drew.surfphotos.web.security.SecurityUtils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 import static com.drew.surfphotos.web.Constants.PHOTO_LIMIT;
 import static com.drew.surfphotos.web.util.RoutingUtils.forwardToPage;
+import static com.drew.surfphotos.web.util.RoutingUtils.redirectToUrl;
 
 @WebServlet(urlPatterns = "/", loadOnStartup = 1)
 public class ProfileController extends HttpServlet {
@@ -40,7 +42,11 @@ public class ProfileController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
         if (isHomeUrl(url)) {
-            handleHomeRequest(req, resp);
+            if(SecurityUtils.isTempAuthenticated()) {
+                redirectToUrl("/sign-up", req, resp);
+            } else {
+                handleHomeRequest(req, resp);
+            }
         } else {
             handleProfileRequest(req, resp);
         }
