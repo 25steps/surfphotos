@@ -44,12 +44,12 @@
                             <bundleFileName>surfphotos-web.war</bundleFileName>
                             <contextRoot>/</contextRoot>
                         </webModule>
-                        <!--webModule>
+                        <webModule>
                             <artifactId>surfphotos-rest</artifactId>
                             <groupId>com.drew</groupId>
                             <bundleFileName>surfphotos-rest.war</bundleFileName>
                             <contextRoot>/api</contextRoot>
-                        </webModule-->
+                        </webModule>
                         <webModule>
                             <artifactId>surfphotos-ws</artifactId>
                             <groupId>com.drew</groupId>
@@ -84,12 +84,12 @@
             <version>1.0</version>
             <type>war</type>
         </dependency>
-        <!--dependency>
+        <dependency>
             <groupId>com.drew</groupId>
             <artifactId>surfphotos-rest</artifactId>
             <version>1.0</version>
             <type>war</type>
-        </dependency-->
+        </dependency>
         <dependency>
             <groupId>com.drew</groupId>
             <artifactId>surfphotos-ws</artifactId>

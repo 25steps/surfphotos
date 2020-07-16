@@ -15,7 +15,7 @@
         <module>surfphotos-web</module>
         <module>surfphotos-ear</module>
         <module>surfphotos-ws</module>
-        <!--module>surfphotos-rest</module-->
+        <module>surfphotos-rest</module>
 
 
     </modules>
