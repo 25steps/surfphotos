@@ -8,7 +8,7 @@ import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
-@WebService(targetNamespace = "http://soap.myphotos.com/ws/ProfileService?wsdl")
+@WebService(targetNamespace = "http://soap.surfphotos.com/ws/ProfileService?wsdl")
 public interface ProfileWebService {
     @WebMethod
     @WebResult(name = "profile")
