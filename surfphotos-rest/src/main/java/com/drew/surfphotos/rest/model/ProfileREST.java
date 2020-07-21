@@ -1,23 +1,32 @@
 package com.drew.surfphotos.rest.model;
 
 import com.drew.surfphotos.common.annotation.converter.ConvertAsURL;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(name="")
+@XmlType(name = "")
+@ApiModel("Profile")
 public class ProfileREST extends SimpleProfileREST{
 
+    @ApiModelProperty(required = true)
     private String firstName;
 
+    @ApiModelProperty(required = true)
     private String lastName;
 
     @ConvertAsURL
+    @ApiModelProperty(required = true)
     private String avatarUrl;
 
+    @ApiModelProperty(required = true)
     private String jobTitle;
 
+    @ApiModelProperty(required = true)
     private String location;
 
+    @ApiModelProperty(required = true)
     private int photoCount;
 
     public String getFirstName() {

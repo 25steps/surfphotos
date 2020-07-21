@@ -1,11 +1,15 @@
 package com.drew.surfphotos.rest.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
-@XmlType(name="")
+@ApiModel("ValidationResult")
 public class ValidationResultREST extends ErrorMessageREST{
 
+    @ApiModelProperty(required = true)
     private List<ValidationItemREST> items;
 
     public ValidationResultREST() {

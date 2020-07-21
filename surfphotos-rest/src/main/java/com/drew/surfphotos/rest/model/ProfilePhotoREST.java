@@ -1,18 +1,25 @@
 package com.drew.surfphotos.rest.model;
 
 import com.drew.surfphotos.common.annotation.converter.ConvertAsURL;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name="")
+@ApiModel("ProfilePhoto")
 public class ProfilePhotoREST {
+    @ApiModelProperty(required = true, value = "Photo id. Uses as unique identificator for /preview and /download api")
     private Long id;
 
     @ConvertAsURL
+    @ApiModelProperty(required = true)
     private String smallUrl;
 
+    @ApiModelProperty(required = true)
     private long views;
 
+    @ApiModelProperty(required = true)
     private long downloads;
 
     public Long getId() {
