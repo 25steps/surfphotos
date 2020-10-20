@@ -37,7 +37,7 @@
         </header>
         <div class="row">
             <div class="${'8u 12u$(xsmall)'}">
-                <p>service, which allow you to share high-resolution photos for <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">free</a></p>
+                <p>service, which allow you to share high-resolution photos for free</p>
             </div>
             <div class="${'4u$ 12u$(xsmall)'}">
                 <tags:sort-mode-selector/>
